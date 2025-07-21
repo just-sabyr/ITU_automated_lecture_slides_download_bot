@@ -56,17 +56,19 @@ def login_with_selenium(username, password, login_redirect_url):
         driver.quit() # Always close the browser
 
 
-# Get the student credentials
-import dotenv
-credentials = dotenv.dotenv_values('.env')
-USERNAME, PASSWORD = credentials['USERNAME'], credentials['PASSWORD']
-
-# Links to the ninova course
-BASE_NINOVA_URL = "https://ninova.itu.edu.tr"
-INITIAL_LOGIN_REDIRECT_URL = 'https://ninova.itu.edu.tr/Sinif/7165.106324' # Must be a link that will send u to login webpage
 
 
+# Example Use
 if __name__ == "__main__":
+    # Get the student credentials
+    import dotenv
+    credentials = dotenv.dotenv_values('.env')
+    USERNAME, PASSWORD = credentials['USERNAME'], credentials['PASSWORD']
+
+    # Links to the ninova course
+    BASE_NINOVA_URL = "https://ninova.itu.edu.tr"
+    INITIAL_LOGIN_REDIRECT_URL = 'https://ninova.itu.edu.tr/Sinif/7165.106324' # Must be a link that will send u to login webpage
+
     # 1. Perform login with Selenium
     authenticated_session = login_with_selenium(
         USERNAME,
@@ -76,3 +78,4 @@ if __name__ == "__main__":
 
     if authenticated_session:
         print("Now you can login to Ninova using the login_with _selenium function")
+

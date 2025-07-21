@@ -1,0 +1,1 @@
+def get_session_cookies_from_selenium(driver)
