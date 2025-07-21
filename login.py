@@ -8,7 +8,7 @@ import time
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse, parse_qs
 
-def login_with_selenium(username, password, login_url, initial_ninova_url):
+def login_with_selenium(username, password, login_redirect_url):
     """
     Handles the login process using Selenium and returns an authenticated requests.Session.
     """
@@ -20,8 +20,8 @@ def login_with_selenium(username, password, login_url, initial_ninova_url):
     driver.set_window_size(1200, 800) # Optional: Set window size
 
     try:
-        print(f"Navigating to login page: {login_url}")
-        driver.get(login_url)
+        print(f"Navigating to login page: {login_redirect_url}")
+        driver.get(login_redirect_url)
 
         # Wait for the username field to be visible and interactable
         username_field = WebDriverWait(driver, 20).until(
@@ -57,7 +57,6 @@ def login_with_selenium(username, password, login_url, initial_ninova_url):
 
 
 # Get the student credentials
-import os 
 import dotenv
 credentials = dotenv.dotenv_values('.env')
 USERNAME, PASSWORD = credentials['USERNAME'], credentials['PASSWORD']
@@ -65,19 +64,15 @@ USERNAME, PASSWORD = credentials['USERNAME'], credentials['PASSWORD']
 # Links to the ninova course
 BASE_NINOVA_URL = "https://ninova.itu.edu.tr"
 INITIAL_LOGIN_REDIRECT_URL = 'https://ninova.itu.edu.tr/Sinif/7165.106324' # Must be a link that will send u to login webpage
-TARGET_COURSE_RESOURCES_URL = 'https://ninova.itu.edu.tr/tr/dersler/bilgisayar-bilisim-fakultesi/21/blg-252e/ekkaynaklar?g397'
-DOWNLOAD_DIRECTORY = "ITU_Ninova_Lecture_Slides" # Change as you want
 
 
-# 1. Perform login with Selenium
-authenticated_session = login_with_selenium(
-    USERNAME,
-    PASSWORD,
-    INITIAL_LOGIN_REDIRECT_URL,
-    TARGET_COURSE_RESOURCES_URL
-)
+if __name__ == "__main__":
+    # 1. Perform login with Selenium
+    authenticated_session = login_with_selenium(
+        USERNAME,
+        PASSWORD,
+        INITIAL_LOGIN_REDIRECT_URL,
+    )
 
-if authenticated_session:
-    print("\nStarting download process...")
-    # 2. Start traversing from the main course resources page
-    # Ensure the base download directory exists
+    if authenticated_session:
+        print("Now you can login to Ninova using the login_with _selenium function")
