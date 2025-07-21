@@ -63,8 +63,11 @@ credentials = dotenv.dotenv_values('.env')
 USERNAME, PASSWORD = credentials['USERNAME'], credentials['PASSWORD']
 
 # Links to the ninova course
-INITIAL_LOGIN_REDIRECT_URL = 'https://ninova.itu.edu.tr/tr/dersler/bilgisayar-bilisim-fakultesi/21/blg-252e/ekkaynaklar?g397'
+BASE_NINOVA_URL = "https://ninova.itu.edu.tr"
+INITIAL_LOGIN_REDIRECT_URL = 'https://ninova.itu.edu.tr/Sinif/7165.106324' # Must be a link that will send u to login webpage
 TARGET_COURSE_RESOURCES_URL = 'https://ninova.itu.edu.tr/tr/dersler/bilgisayar-bilisim-fakultesi/21/blg-252e/ekkaynaklar?g397'
+DOWNLOAD_DIRECTORY = "ITU_Ninova_Lecture_Slides" # Change as you want
+
 
 # 1. Perform login with Selenium
 authenticated_session = login_with_selenium(
