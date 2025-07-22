@@ -3,10 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests
-import os
-import time
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlparse, parse_qs
 
 def login_with_selenium(username, password, login_redirect_url):
     """
@@ -73,7 +69,7 @@ if __name__ == "__main__":
     authenticated_session = login_with_selenium(
         USERNAME,
         PASSWORD,
-        INITIAL_LOGIN_REDIRECT_URL,
+        INITIAL_LOGIN_REDIRECT_URL
     )
 
     if authenticated_session:
