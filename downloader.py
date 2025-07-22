@@ -96,7 +96,7 @@ def traverse_and_download(session, url, base_download_path, visited_urls=None):
     if url in visited_urls:
         print(f"Already visited: {url}, skipping.")
         return
-    visited_urls.add(url) # TODO move this to the last line
+    visited_urls.add(url) # This might fail if there is an error before url is processed (which can only finish by the end of this function)
 
     print(f"\nVisiting: {url}")
     try:
@@ -111,6 +111,7 @@ def traverse_and_download(session, url, base_download_path, visited_urls=None):
     # Determine the current path for saving files
     current_relative_path = extract_path_from_breadcrumb(soup)
     current_save_dir = os.path.join(base_download_path, current_relative_path)
+
     os.makedirs(current_save_dir, exist_ok=True)
     print(f"Saving files to: {current_save_dir}")
 
@@ -123,12 +124,13 @@ def traverse_and_download(session, url, base_download_path, visited_urls=None):
         if link_tag and img_tag:
             # URL
             href = link_tag.get('href')
+            if not href: 
+                print(f'WARNING: {link_tag.get_text()} has no download link\n')
+                continue
+
             absolute_url = urljoin(BASE_NINOVA_URL, href)
 
             if 'folder.png' in img_tag.get('src', ''):
-                folder_name = link_tag.get_text()
-                # TODO: preprocess the folder name
-                new_folder_path = os.path.join(current_save_dir, folder_name)
-                traverse_and_download(session, absolute_url, new_folder_path, visited_urls=visited_urls)
+                traverse_and_download(session, absolute_url, base_download_path, visited_urls=visited_urls)
             elif 'ikon-pdf.png' in img_tag.get('src', ''):
                 download_file(session, absolute_url, current_save_dir)
