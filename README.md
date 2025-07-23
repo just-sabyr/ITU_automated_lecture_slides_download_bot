@@ -61,9 +61,9 @@ Ever felt frustrated with having have to download your slides one by one? This i
 
 ## Usage
 
-    ```bash
-    python main.py
-    ```
+```bash
+python main.py
+```
 
 ---
 
