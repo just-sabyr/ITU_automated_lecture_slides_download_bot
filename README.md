@@ -22,10 +22,10 @@
 Ever felt frustrated with having have to download your slides one by one? This is my solution to the shared problem of every student. 
 
 ## Built with
-* [Python]
-* [Selenium]
-* [BeautifulSoup]
-* [Requests]
+* [Python](https://www.python.org/downloads/release/python-31013/)
+* [Selenium](https://www.selenium.dev/)
+* [BeautifulSoup](https://pypi.org/project/beautifulsoup4/)
+* [Requests](https://pypi.org/project/requests/)
 
 ---
 
@@ -50,16 +50,17 @@ Ever felt frustrated with having have to download your slides one by one? This i
 
 4. Add your login details to .env file (look at the `sample_env` file)
 
-3. Install Dependencies:
+5. Install Dependencies:
     ```bash
     pip install -r requiremnts.txt
     ```
 
-4. My python version is Python 3.10.13
+6. My python version is Python 3.10.13
 
 ---
 
 ## Usage
+
     ```bash 
     python main.py
     ```
