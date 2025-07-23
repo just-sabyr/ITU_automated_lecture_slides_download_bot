@@ -35,7 +35,7 @@ Ever felt frustrated with having have to download your slides one by one? This i
 
 1. Clone the repo:
     ```bash 
-    git clone [https://github.com/just-sabyr/ITU_automated_lecture_slides_download_bot.git](https://github.com/just-sabyr/ITU_automated_lecture_slides_download_bot.git)
+    git clone https://github.com/just-sabyr/ITU_automated_lecture_slides_download_bot.git
     ```
 
 2. Navigate to the project directory:
@@ -61,7 +61,7 @@ Ever felt frustrated with having have to download your slides one by one? This i
 
 ## Usage
 
-    ```bash 
+    ```bash
     python main.py
     ```
 
